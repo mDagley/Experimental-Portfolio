@@ -1,0 +1,1545 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cupcake Petri Net</title>
+    <link href="../css/portfolio.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <p><a href="CityofMelissaRedesign.html" onclick=window.close() class="return">&#9668; Return</a></p>
+    
+    <!-- Initialize Buttons !-->
+    <input type="button" style="z-index:2; position:absolute; top:750px; left:385px" value="Melt" id="button1"/>
+    <input type="button" style="z-index:2; position:absolute; top:750px; left:835px" value="Add to Bowl" id="button2" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:860px; left:1373px" value="Beat" id="button3" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:860px; left:1860px" value="Add to Bowl" id="button4" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:860px; left:2415px" value="Beat" id="button5" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:200px; left:675px" value="Add to Bowl" id="button6"/>
+    <input type="button" style="z-index:2; position:absolute; top:300px; left:1188px" value="Stir" id="button7" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:350px; left:2951px" value="Combine" id="button8" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:550px; left:3495px" value="Fill Pan" id="button9" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:550px; left:4035px" value="Put in Oven" id="button10" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:550px; left:4587px" value="Take Out" id="button11" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:550px; left:5150px" value="Cool" id="button12" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:550px; left:5705px" value="Ice" id="button13" disabled="true"/>
+    <input type="button" style="z-index:2; position:absolute; top:1260px; left:2945px" value="Insert Liners" id="button14"/> 
+    <input type="button" style="z-index:2; position:absolute; top:1600px; left:406px" value="Preheat Oven" id="button15"/>
+    
+
+    <!-- Create Canvas !-->
+	<canvas id="petriNet" width="9999" height="1900" style="z-index:-1"></canvas>
+    
+    <script>
+        var canvas = document.getElementById('petriNet');
+		var context = canvas.getContext('2d');
+        
+        /*Set Title */
+            //title
+            context.font = '30pt Calibri';
+            context.fillStyle='black';
+            context.fillText('Cupcake Petri Net', 40, 50);
+        
+        /* Draw all images */
+        
+            //cups of flour image
+            var a = new Image();
+            a.onload = function() {
+            context.drawImage(a, 250, 120, 350, 150);
+            context.drawImage(a, 380, 1000, 350, 150);
+
+            };
+
+            //arrows for all transitions
+            var b = new Image();
+            b.onload = function() {
+            context.drawImage(b, 490, 300, 200, 25); //p11 -> t6
+            context.drawImage(b, 490, 455, 200, 25); //p12 -> t6
+            context.drawImage(b, 715, 400, 200, 25); //t6 -> p14
+            context.drawImage(b, 490, 605, 200, 25); //p13 -> t6
+            context.drawImage(b, 980, 400, 200, 25); //p14 -> t7
+            context.drawImage(b, 1210, 400, 200, 25); //t7 -> p15
+            context.drawImage(b, 190, 822, 200, 25); //p1 -> t1
+            context.drawImage(b, 400, 822, 200, 25); //t1 -> p2
+            context.drawImage(b, 650, 822, 200, 25); //p2 -> t2
+            context.drawImage(b, 650, 940, 200, 25); //p3 -> t2
+            context.drawImage(b, 880, 940, 200, 25); //t2 -> p4
+            context.drawImage(b, 1155, 940, 200, 25); //p4 -> t3
+            context.drawImage(b, 1400, 940, 200, 25); //t3 -> p5
+            context.drawImage(b, 1675, 940, 200, 25); //p5 -> t4
+            context.drawImage(b, 1675, 1140, 200, 25); //p6 -> t4
+            context.drawImage(b, 1675, 1340, 200, 25); //p7 -> t4
+            context.drawImage(b, 1675, 1540, 200, 25); //p8 -> t4
+            context.drawImage(b, 1900, 940, 200, 25); //t4 -> p9
+            context.drawImage(b, 2200, 940, 200, 25); //p9 -> t5
+            context.drawImage(b, 2450, 940, 200, 25); //t5 -> p10
+            context.drawImage(b, 2750, 940, 200, 25); //p10 -> t8
+            context.drawImage(b, 2990, 650, 200, 25); //t8 -> p16
+            context.drawImage(b, 3290, 650, 200, 25); //p16 -> t12
+            context.drawImage(b, 3540, 650, 200, 25); //t12 -> p23
+            context.drawImage(b, 3840, 650, 200, 25); //p23 ->t13
+            context.drawImage(b, 3840, 950, 200, 25); //p21 ->t13
+            context.drawImage(b, 4090, 650, 200, 25); //t13 ->p24
+            context.drawImage(b, 4390, 650, 200, 25); //p24 ->t14
+            context.drawImage(b, 4390, 950, 200, 25); //p25 ->t14
+            context.drawImage(b, 4640, 650, 200, 25); //t14 ->p26
+            context.drawImage(b, 4940, 650, 200, 25); //p26 ->t19
+            context.drawImage(b, 5190, 650, 200, 25); //t19 ->p34
+            context.drawImage(b, 5490, 650, 200, 25); //p34 ->t20
+            context.drawImage(b, 5490, 950, 200, 25); //p35 ->t20
+            context.drawImage(b, 5740, 650, 200, 25); //t20 ->p37
+            context.drawImage(b, 2750, 1740, 200, 25); //p17 -> t9
+            context.drawImage(b, 2990, 1740, 200, 25); //t9 -> p18
+            context.drawImage(b, 3290, 1740, 200, 25); //p18 -> t12
+            context.drawImage(b, 215, 1775, 200, 25); //p19 -> t10
+            context.drawImage(b, 3840, 1820, 200, 25); //p20 -> t13
+            
+            
+
+            };
+        
+            var m = new Image();
+            m.onload = function() {
+                context.drawImage(m, 1487, 400, 1470, 25); //p15 -> t8
+            }
+
+            //Mixing Bowl - Dry Ingredients Image
+            var c = new Image();
+            c.onload = function() {
+            context.drawImage(c, 780, 125, 300, 310);
+
+            };
+
+            //teaspoon of baking powder image
+            var d = new Image();
+            d.onload = function() {
+            context.drawImage(d, 223, 350, 300, 70);
+
+            };
+
+            //teaspoon of baking powder image
+            var e = new Image();
+            e.onload = function() {
+            context.drawImage(e, 205, 520, 300, 50);
+
+            };
+
+            //butter image
+            var f = new Image();
+            f.onload = function() {
+            context.drawImage(f, 80, 720, 190, 55);
+
+            };
+
+            //melted butter image
+            var g = new Image();
+            g.onload = function() {
+            context.drawImage(g, 550, 685, 150, 120);
+
+            };
+        
+            //Butter and Sugar Image
+            var h = new Image();
+            h.onload = function() {
+            context.drawImage(h, 965, 650, 300, 260);
+
+            };
+        
+            //Mixing Bowl - Dry Ingredients Stirred Image
+            var i = new Image();
+            i.onload = function() {
+            context.drawImage(i, 1285, 110, 300, 260);
+
+            };
+        
+            //Butter and Sugar Creamed Image
+            var j = new Image();
+            j.onload = function() {
+            context.drawImage(j, 1475, 650, 300, 260);
+
+            };
+        
+            //Mixing Bowl - Wet Ingredients
+            var k = new Image();
+            k.onload = function() {
+            context.drawImage(k, 2000, 650, 300, 260);
+
+            };
+        
+            //Mixing Bowl - Wet ingredients stirred
+            var l = new Image();
+            l.onload = function() {
+            context.drawImage(l, 2540, 650, 300, 260);
+
+            };
+        
+            //Cake Batter
+            var n = new Image();
+            n.onload = function() {
+            context.drawImage(n, 3070, 350, 300, 260);
+
+            };
+        
+            //Filled Pan
+            var o = new Image();
+            o.onload = function() {
+            context.drawImage(o, 3600, 30, 390, 570);
+            
+
+            };
+        
+            //Baked Cupcakes
+            var p = new Image();
+            p.onload = function() {
+            context.drawImage(p, 4700, 30, 390, 570);
+            
+
+            };
+        
+            //cooled Cupcakes
+            var q = new Image();
+            q.onload = function() {
+            context.drawImage(q, 5250, 200, 390, 380);
+
+            };
+        
+            //Iced Cupcakes
+            var r = new Image();
+            r.onload = function() {
+            context.drawImage(r, 5800, 100, 390, 480);
+
+            };
+        
+            //Oven
+            var s = new Image();
+            s.onload = function() {
+            context.drawImage(s, 4150, 200, 390, 380);
+            context.drawImage(s, 30, 1400, 340, 330);
+
+            };
+        
+            //Timer
+            var t = new Image();
+            t.onload = function() {
+            context.drawImage(t, 4250, 733, 170, 180);
+            context.drawImage(t, 5350, 733, 170, 180);
+            context.drawImage(t, 3700, 733, 170, 180);
+
+            };
+		
+            //Eggs
+            var u = new Image();
+            u.onload = function() {
+            context.drawImage(u, 1350, 1050, 230, 190);
+
+            };
+        
+             //Vanilla
+            var v = new Image();
+            v.onload = function() {
+            context.drawImage(v, 1280, 1300, 300, 40);
+
+            };
+        
+             //Milk
+            var w = new Image();
+            w.onload = function() {
+            context.drawImage(w, 1150, 1420, 460, 190);
+
+            };
+        
+            //Pan
+            var x = new Image();
+            x.onload = function() {
+            context.drawImage(x, 2515, 1100, 390, 570);
+            
+
+            };
+        
+            //Lined Pan
+            var y = new Image();
+            y.onload = function() {
+            context.drawImage(y, 3050, 1100, 390, 570);
+            
+
+            };
+        
+            //Arrow
+            var z = new Image();
+            z.onload = function() {
+            context.drawImage(z, 450, 1820, 3290, 25);
+            
+
+            };
+        
+            //Temperature
+            var za = new Image();
+            za.onload = function() {
+            context.drawImage(za, 3600, 1580, 390, 200);
+            
+
+            };
+		
+        /* set image sources */
+        
+            a.src ='MeasuringCupPowder.png';
+            b.src='arrow.png';
+            c.src='BowlDry.png';
+            d.src='TeaspoonPowder.png';
+            e.src='FourthTeaspoonPowder.png';
+            f.src='Butter.png';
+            g.src='ButterMelted.png';
+            h.src='BowlWet.png';
+            i.src='BowlPowderStirred.png';
+            j.src='BowlWetCreamed.png';
+            k.src='BowlWetAll.png';
+            l.src='BowlWetStirred.png';
+            m.src='arrow_long.png';
+            n.src='BowlBatter.png';
+            o.src='PanBatter.png'; 
+            p.src='PanBaked.png';
+            q.src='cupcake.png';
+            r.src='icedcupcake.png';
+            s.src='oven.png';
+            t.src='Timer.png';
+            u.src='Egg.png';
+            v.src='TeaspoonVanilla.png';
+            w.src='MilkMeasured.png';
+            x.src='Pan.png';
+            y.src='LinedPan.png';
+            z.src='arrow_longer.png';
+            za.src='temp.png';
+        
+        /* Draw Circles for Periods */
+        
+            //p1
+            context.beginPath();
+            context.arc(168, 835, 17, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();
+
+            //p2
+            context.beginPath();
+            context.arc(625, 835, 17, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p3
+            context.beginPath();
+            context.arc(625, 955, 17, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p4
+            context.beginPath();
+            context.arc(1120, 955, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p5
+            context.beginPath();
+            context.arc(1635, 955, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p6
+            context.beginPath();
+            context.arc(1635, 1155, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p7
+            context.beginPath();
+            context.arc(1635, 1355, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p8
+            context.beginPath();
+            context.arc(1635, 1555, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p9
+            context.beginPath();
+            context.arc(2150, 955, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p10
+            context.beginPath();
+            context.arc(2700, 955, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p11
+            context.beginPath();
+            context.arc(468, 310, 17, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();
+
+
+            //p12
+            context.beginPath();
+            context.arc(468, 465, 17, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();
+
+            //p13
+            context.beginPath();
+            context.arc(468, 615, 17, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p15
+            context.beginPath();
+            context.arc(1445, 410, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p16
+            context.beginPath();
+            context.arc(3235, 655, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p17
+            context.beginPath();
+            context.arc(2700, 1755, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p18
+            context.beginPath();
+            context.arc(3235, 1755, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p19
+            context.beginPath();
+            context.arc(185, 1785, 17, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p20
+            context.beginPath();
+            context.arc(3785, 1830, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p21
+            context.beginPath();
+            context.arc(3785, 955, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p23
+            context.beginPath();
+            context.arc(3785, 655, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p24
+            context.beginPath();
+            context.arc(4335, 655, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p25
+            context.beginPath();
+            context.arc(4335, 955, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p26
+            context.beginPath();
+            context.arc(4885, 655, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p34
+            context.beginPath();
+            context.arc(5435, 655, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p35
+            context.beginPath();
+            context.arc(5435, 955, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+            //p37
+            context.beginPath();
+            context.arc(5985, 655, 25, 0, 2 * Math.PI, false);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = 'black';
+            context.stroke();
+        
+        /* Initialize Starting Tokens */
+        
+            //token 1
+            context.beginPath();
+            context.arc(468, 311.5, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+
+            //token 2
+            context.beginPath();
+            context.arc(468, 465, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+
+            //token 3
+            context.beginPath();
+            context.arc(468, 615, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+
+            //token 4
+            context.beginPath();
+            context.arc(168, 835, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+        
+            //token 5
+            context.beginPath();
+            context.arc(625, 955, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+        
+            //token 6
+            context.beginPath();
+            context.arc(1635, 1155, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+        
+            //token 7
+            context.beginPath();
+            context.arc(1635, 1355, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+        
+            //token 8
+            context.beginPath();
+            context.arc(1635, 1555, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+        
+            //token 9
+            context.beginPath();
+            context.arc(2700, 1755, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+        
+            //token 10
+            context.beginPath();
+            context.arc(185, 1785, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0; 
+		
+        /* Set Button OnClick Functions */
+        
+            document.getElementById("button1").onclick = function() {t1()};
+
+            function t1() {
+                var btn = document.getElementById("button1");
+                var btn2 = document.getElementById("button2");
+                btn.disabled = true;
+                btn2.disabled = false;
+
+                //clear token 4
+                context.beginPath();
+                context.arc(168, 835, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 4
+                context.beginPath();
+                context.arc(625, 835, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+            document.getElementById("button2").onclick = function() {t2()};
+
+            function t2() {
+                var btn = document.getElementById("button2");
+                btn.disabled = true;
+                
+                var btn2 = document.getElementById("button3");
+                btn2.disabled = false;
+
+                //clear token 4b
+                context.beginPath();
+                context.arc(625, 835, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 5
+                
+                context.beginPath();
+                context.arc(625, 955, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 5
+                context.beginPath();
+                context.arc(1120, 955, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button3").onclick = function() {t3()};
+
+            function t3() {
+                var btn = document.getElementById("button3");
+                btn.disabled = true;
+                
+                var btn2 = document.getElementById("button4");
+                btn2.disabled = false;
+
+                //clear token 5
+                context.beginPath();
+                context.arc(1120, 955, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 5
+                context.beginPath();
+                context.arc(1635, 955, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button4").onclick = function() {t4()};
+
+            function t4() {
+                var btn = document.getElementById("button4");
+                btn.disabled = true;
+                
+                var btn2 = document.getElementById("button5");
+                btn2.disabled = false;
+
+                //clear token 5
+                context.beginPath();
+                context.arc(1635, 955, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 6
+                context.beginPath();
+                context.arc(1635, 1155, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 7
+                context.beginPath();
+                context.arc(1635, 1355, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 8
+                context.beginPath();
+                context.arc(1635, 1555, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 5
+                context.beginPath();
+                context.arc(2150, 955, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button5").onclick = function() {t5()};
+
+            function t5() {
+                var btn = document.getElementById("button5");
+                btn.disabled = true;
+                
+                var btn6 = document.getElementById("button6");
+                var btn7 = document.getElementById("button7");
+                
+                if(btn6.disabled && btn7.disabled)
+                    {
+                        var btn8 = document.getElementById("button8");
+                        btn8.disabled = false;
+                    }
+
+                //clear token 5
+                context.beginPath();
+                context.arc(2150, 955, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 5
+                context.beginPath();
+                context.arc(2700, 955, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+            document.getElementById("button6").onclick = function() {t6()};
+
+            function t6() {
+                var btn = document.getElementById("button6");
+                btn.disabled = true;
+                
+                var btn7 = document.getElementById("button7");
+                btn7.disabled = false;
+                
+                
+
+                //clear token 1
+                context.beginPath();
+                context.arc(468, 311.5, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = 'white';
+                context.fill();
+                context.lineWidth = 0;
+
+                //clear token 2
+                context.beginPath();
+                context.arc(468, 465, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //clear token 3
+                context.beginPath();
+                context.arc(468, 615, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 1
+                context.beginPath();
+                context.arc(945, 410, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button7").onclick = function() {t7()};
+
+            function t7() {
+                var btn = document.getElementById("button7");
+                btn.disabled = true;
+                
+                var btn1 = document.getElementById("button1");
+                var btn2 = document.getElementById("button2");
+                var btn3 = document.getElementById("button3");
+                var btn4 = document.getElementById("button4");
+                var btn5 = document.getElementById("button5");
+                var btn6 = document.getElementById("button6");
+                
+                if(btn1.disabled && btn2.disabled && btn3.disabled && btn4.disabled && btn5.disabled && btn6.disabled)
+                    {
+                        var btn8 = document.getElementById("button8");
+                        btn8.disabled = false;
+                    }
+
+                //clear token 1b
+                context.beginPath();
+                context.arc(945, 410, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 1b
+                context.beginPath();
+                context.arc(1445, 410, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button8").onclick = function() {t8()};
+
+            function t8() {
+                var btn = document.getElementById("button8");
+                btn.disabled = true;
+                
+                var btn14 = document.getElementById("button14");
+                
+                if(btn14.disabled)
+                    {
+                        var btn2 = document.getElementById("button9");
+                        btn2.disabled = false;
+                    }
+
+                //clear token 
+                context.beginPath();
+                context.arc(1445, 410, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 
+                context.beginPath();
+                context.arc(2700, 955, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 
+                context.beginPath();
+                context.arc(3236, 653, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button9").onclick = function() {t9()};
+
+            function t9() {
+                var btn = document.getElementById("button9");
+                btn.disabled = true;
+               
+                
+                
+                var btn15 = document.getElementById("button15");
+           
+            if(btn15.disabled)
+                {
+                    var btn10 = document.getElementById("button10");
+                    btn10.disabled = false;
+                }
+
+                //clear token 
+                context.beginPath();
+                context.arc(3236, 653, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 
+                context.beginPath();
+                context.arc(3235, 1755, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 
+                context.beginPath();
+                context.arc(3785, 653, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button10").onclick = function() {t10()};
+
+            function t10() {
+                var btn = document.getElementById("button10");
+                btn.disabled = true;
+                
+            //Set up function to wait 5 seconds before adding token to p25
+                
+            setTimeout(waitfunction, 5000) 
+            
+            function waitfunction() {
+                        //draw token 
+                        context.beginPath();
+                        context.arc(4335, 953, 5, 0, 2 * Math.PI, false);
+                        context.fillStyle = '#04adad';
+                        context.fill();
+                        context.lineWidth = 0; 
+                  
+                        var btn2 = document.getElementById("button11");
+                        btn2.disabled = false;
+                    
+                    }
+                
+
+                //clear token 
+                context.beginPath();
+                context.arc(3785, 653, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 
+                context.beginPath();
+                context.arc(3785, 1830, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 
+                context.beginPath();
+                context.arc(3785, 950, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 
+                context.beginPath();
+                context.arc(4335, 653, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button11").onclick = function() {t11()};
+
+            function t11() {
+                var btn = document.getElementById("button11");
+                btn.disabled = true;
+                
+                var btn2 = document.getElementById("button12");
+                btn2.disabled = false;
+
+                //clear token 
+                context.beginPath(); 
+                context.arc(4335, 653, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 
+                context.beginPath();
+                context.arc(4335, 953, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 
+                context.beginPath();
+                context.arc(4885, 653, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+                 
+        }
+        
+        document.getElementById("button12").onclick = function() {t12()};
+
+            function t12() {
+                var btn = document.getElementById("button12");
+                btn.disabled = true;
+                
+            //Set up function to wait 5 seconds before adding token to p35
+
+                setTimeout(waitfunction, 5000) 
+
+                    function waitfunction() {
+                        //draw token 
+                        context.beginPath();
+                        context.arc(5435, 953, 5, 0, 2 * Math.PI, false);
+                        context.fillStyle = '#04adad';
+                        context.fill();
+                        context.lineWidth = 0; 
+
+                        var btn2 = document.getElementById("button13");
+                        btn2.disabled = false;
+
+                        }
+
+                //clear token 
+                context.beginPath();
+                context.arc(4885, 653, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 
+                context.beginPath();
+                context.arc(5435, 653, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button13").onclick = function() {t13()};
+
+            function t13() {
+                var btn = document.getElementById("button13");
+                btn.disabled = true;
+
+                //clear token 
+                context.beginPath();
+                context.arc(5435, 653, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+                
+                //clear token 
+                context.beginPath();
+                context.arc(5435, 953, 6, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = 0;
+
+                //redraw token 
+                context.beginPath();
+                context.arc(5985, 653, 5, 0, 2 * Math.PI, false);
+                context.fillStyle = '#04adad';
+                context.fill();
+                context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button14").onclick = function() {t14()};
+
+            function t14() {
+            var btn = document.getElementById("button14");
+            btn.disabled = true;
+            
+            var btn1 = document.getElementById("button1");
+            var btn2 = document.getElementById("button2");
+            var btn3 = document.getElementById("button3");
+            var btn4 = document.getElementById("button4");
+            var btn5 = document.getElementById("button5");
+            var btn6 = document.getElementById("button6");
+            var btn7 = document.getElementById("button7");
+            var btn8 = document.getElementById("button8");
+           
+            if(btn1.disabled && btn2.disabled && btn3.disabled && btn4.disabled && btn5.disabled && btn6.disabled && btn7.disabled && btn8.disabled)
+                {
+                    var btn12 = document.getElementById("button9");
+                    btn12.disabled = false;
+                }
+                
+            //clear token 
+            context.beginPath();
+            context.arc(2700, 1755, 6, 0, 2 * Math.PI, false);
+            context.fillStyle = '#ffffff';
+            context.fill();
+            context.lineWidth = 0;
+
+            //redraw token 
+            context.beginPath();
+            context.arc(3235, 1755, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+            
+             
+        }
+        
+        document.getElementById("button15").onclick = function() {t15()};
+
+            function t15() {
+            var btn = document.getElementById("button15");
+            btn.disabled = true;
+                
+            //Set up function to wait 5 seconds before adding token to p35
+
+                setTimeout(waitfunction, 5000) 
+
+                    function waitfunction() {
+                        //draw token 
+                        context.beginPath();
+                        context.arc(3785, 950, 5, 0, 2 * Math.PI, false);
+                        context.fillStyle = '#04adad';
+                        context.fill();
+                        context.lineWidth = 0; 
+
+                        var btn1 = document.getElementById("button1");
+                        var btn2 = document.getElementById("button2");
+                        var btn3 = document.getElementById("button3");
+                        var btn4 = document.getElementById("button4");
+                        var btn5 = document.getElementById("button5");
+                        var btn6 = document.getElementById("button6");
+                        var btn7 = document.getElementById("button7");
+                        var btn8 = document.getElementById("button8");
+                        var btn9 = document.getElementById("button9");
+
+
+                    if(btn1.disabled && btn2.disabled && btn3.disabled && btn4.disabled && btn5.disabled && btn6.disabled && btn7.disabled && btn8.disabled && btn9.disabled)
+                        {
+                            var btn10 = document.getElementById("button10");
+                            btn10.disabled = false;
+                        }
+
+
+                        }
+
+            //clear token 
+            context.beginPath();
+            context.arc(185, 1785, 6, 0, 2 * Math.PI, false);
+            context.fillStyle = '#ffffff';
+            context.fill();
+            context.lineWidth = 0;
+
+            //redraw token 
+            context.beginPath();
+            context.arc(3785, 1830, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = '#04adad';
+            context.fill();
+            context.lineWidth = 0;
+            
+             
+        }
+        
+        
+        
+        
+        /* Create Transitions */
+        
+            //transition 1
+            context.rect(390, 780, 10, 120);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 1 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t1', 387, 920);
+        
+            //transition 2
+            context.rect(860, 785, 10, 220);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 2 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t2', 857, 1023);
+        
+            //transition 3
+            context.rect(1380, 885, 10, 120);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 3 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t3', 1377, 1023);
+        
+            //transition 4
+            context.rect(1885, 885, 10, 720);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 4 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t4', 1883, 1623);
+        
+            //transition 5
+            context.rect(2420, 890, 10, 120);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 5 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t5', 2417, 1028);
+        
+            //transition 6
+            context.rect(700, 220, 10, 420);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 6 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t6', 697, 660);
+        
+            //transition 7
+            context.rect(1190, 320, 10, 120);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 7 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t7', 1187, 460);
+        
+            //transition 8
+            context.rect(2970, 370, 10, 620);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 8 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t8', 2967, 1010);
+        
+            //transition 9
+            context.rect(2970, 1290, 10, 490);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 9 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t9', 2967, 1800);
+        
+             //transition 10
+            context.rect(430, 1630, 10, 230);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 10 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t10', 422, 1880);
+        
+            //transition 12
+            context.rect(3510, 570, 10, 1220);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 12 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t12', 3503, 1810);
+        
+            //transition 13
+            context.rect(4060, 570, 10, 1290);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 13 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t13', 4053, 1880);
+        
+            //transition 14
+            context.rect(4610, 570, 10, 420);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 14 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t14', 4603, 1010);
+        
+            //transition 19
+            context.rect(5160, 570, 10, 220);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 19 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t19', 5153, 810);
+        
+            //transition 20
+            context.rect(5710, 570, 10, 420);
+            context.fillStyle = '#04adad';
+            context.fill();
+
+            //transition 20 label
+            context.font = '15pt Calibri';
+            context.fillStyle='black';
+            context.fillText('t20', 5703, 1010);
+        
+        /* Create Labels for all Periods */
+        
+            //p1 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('1 stick of butter', 127, 795);
+
+            //p1 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p1', 160, 865);
+
+            //p2 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p2', 617, 865);
+        
+            //p3 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p3', 617, 988);
+        
+            //p3 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('1 1/4 cups sugar', 555, 1170);
+        
+            //p4 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p4', 1113, 994);
+        
+            //p5 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p5', 1628, 994);
+        
+            //p6 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p6', 1628, 1194);
+        
+            //p6 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('two eggs', 1448, 1260);
+        
+            //p7 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p7', 1628, 1394);
+        
+            //p7 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('1 tsp vanilla', 1488, 1360);
+        
+            //p8 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p8', 1628, 1594);
+        
+            //p8 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('3/4 cup milk', 1428, 1630);
+        
+            //p9 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p9', 2143, 994);
+        
+            //p10 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p10', 2689, 994);
+        
+            //p11 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('1 1/2 Cups Flour', 420, 282);
+        
+            //p11 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p11', 460, 344);
+
+            //p12 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('1 tsp baking powder', 420, 437);
+
+            //p12 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p12', 460, 500);
+
+            //p13 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('1/4 tsp salt', 435, 585);
+
+            //p13 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p13', 457, 650);
+
+            //p14 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p14', 937, 450);
+        
+            //p15 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p15', 1435, 450);
+        
+            //p16 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p16', 3218, 700);
+        
+            //p17 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p17', 2690, 1795);
+        
+            //p18 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p18', 3225, 1795);
+        
+            //p19 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p19', 173, 1815);
+        
+            //p20 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p19', 3775, 1870);
+        
+            //p21 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p23', 3773, 1000);
+        
+            //p23 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p23', 3775, 700);
+        
+            //p24 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p24', 4325, 700);
+        
+            //p25 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p25', 4325, 1000);
+        
+            //p26 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p26', 4875, 700);
+        
+            //p34 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p34', 5425, 700);
+        
+            //p35 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p35', 5425, 1000);
+        
+            //p37 label
+            context.font = '11pt Calibri';
+            context.fillStyle='black';
+            context.fillText('p37', 5975, 700);
+		
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>City of Melissa Redesign</title>
+<link href="css/portfolio.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+<script src="js/masonry.js"></script>
+    <!-- ... [OTHER INCLUDES] ... -->
+		
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+		<script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script> 
+		
+		<link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css' /> 
+		<script type='text/javascript' src='unitegallery/themes/tiles/ug-theme-tiles.js'></script> 
+
+</head>
+
+<body>
+<div class="container">
+    
+	<div id="header"><h6><a href="about.html" class="about">MELISSA DAGLEY</a></h6>
+    	<div id="navigation"><h7><a href="home.html" class="nav">HOME</a> | <a href="design.html" class="nav">DESIGN</a> | <a href="code.html" class="nav">CODE</a> | 
+        <a href="Resume2017_Updated.pdf" class="nav">RESUME</a></h7></div>
+    </div>
+    <h2>City Website Redesign</h2>
+    <hr>
+     <div id="aboutProject">
+    <p>This project was done as a learning exercise. I mocked up a more modern design concept for an outdated
+        city website. I plan to code a few of the pages and create a working prototype as time progresses.</p><p><a href="#info" style="color:#54c5cb;">More Info</a> | <a href="citymelissa.html" target="_blank" class="next">Experience</a></p>
+    </div>
+     <p class="next">&#9668; Previous Project | <a href="portfoliodesign.html" class="next">Next Project &#9654;</a></p>
+    
+    <div id="gallery" style="display:none;">
+		
+			<img alt="Website Photoshop Mock-up" src="img/citywebsiteimg/01.jpg"
+				data-image="img/citywebsiteimg/01.jpg"
+				data-description="This is the mock-up I created for the website in photoshop.">
+        
+        <img alt="Layout Planning" src="img/citywebsiteimg/02.jpg"
+				data-image="img/citywebsiteimg/02.jpg"
+				data-description="This is initial layout I began with before creating the photoshop mock-up.">
+        
+        <img alt="Original" src="img/citywebsiteimg/03.jpg"
+				data-image="img/citywebsiteimg/03.jpg"
+				data-description="This is a screenshot of the original site at the time I began redesigning it.">
+        
+        <img alt="Comparison" src="img/citywebsiteimg/04.jpg"
+				data-image="img/citywebsiteimg/04.jpg"
+				data-description="This is a side by side comparison of the original site and my redesign.">
+        
+
+			
+			
+        
+    </div>
+    
+    
+     <script type="text/javascript"> 
+			
+			jQuery(document).ready(function(){ 
+				jQuery("#gallery").unitegallery({
+                theme_enable_preloader: true,		//enable preloader circle
+					theme_preloading_height: 200,		//the height of the preloading div, it show before the gallery
+					theme_preloader_vertpos: 100,		//the vertical position of the preloader
+                tiles_type:"nested",
+                gallery_width:"100%",				//gallery width
+					gallery_min_width: 150,				//gallery minimal width when resizing
+                tiles_enable_transition: true,			//enable transition when screen width change
+					tiles_space_between_cols: 6,			//space between images
+					tiles_space_between_cols_mobile: 3,     //space between cols for mobile type
+		 			tiles_nested_optimal_tile_width: 300,	// tiles optimal width
+					tiles_min_columns: 2,					//min columns - for mobile size, for 1 column, type 1
+                tile_enable_textpanel: true,		 	//enable textpanel
+					tile_textpanel_source: "title",		 	//title,desc,desc_title. source of the textpanel. desc_title - if description empty, put title
+					tile_textpanel_always_on: false,	 	//textpanel always visible
+					tile_textpanel_appear_type: "slide", 	//slide, fade - appear type of the textpanel on mouseover
+					tile_textpanel_position:"inside_bottom", //inside_bottom, inside_top, inside_center, top, bottom the position of the textpanel
+					tile_textpanel_offset:0,			    //vertical offset of the textpanel
+					
+					tile_textpanel_padding_top:8,		 	//textpanel padding top 
+					tile_textpanel_padding_bottom:8,	 	//textpanel padding bottom
+					tile_textpanel_padding_right: 11,	 	//cut some space for text from right
+					tile_textpanel_padding_left: 11,	 	//cut some space for text from left
+					tile_textpanel_bg_opacity: 0.4,		 	//textpanel background opacity
+					tile_textpanel_bg_color:"#000000",	 	//textpanel background color
+					tile_textpanel_bg_css:{},			 	//textpanel background css
+					
+					tile_textpanel_title_color:null,		 //textpanel title color. if null - take from css
+					tile_textpanel_title_font_family:null,	 //textpanel title font family. if null - take from css
+					tile_textpanel_title_text_align:null,	 //textpanel title text align. if null - take from css
+					tile_textpanel_title_font_size:null,	 //textpanel title font size. if null - take from css
+					tile_textpanel_title_bold:null,			 //textpanel title bold. if null - take from css
+					tile_textpanel_css_title:{},			 //textpanel additional css of the title
+		
+					tile_textpanel_desc_color:null,			 //textpanel description font family. if null - take from css
+					tile_textpanel_desc_font_family:null,	 //textpanel description font family. if null - take from css
+					tile_textpanel_desc_text_align:null,	 //textpanel description text align. if null - take from css
+					tile_textpanel_desc_font_size:null,		 //textpanel description font size. if null - take from css
+					tile_textpanel_desc_bold:null,		 //textpanel description bold. if null - take from css
+					tile_textpanel_css_description:{},		 //textpanel additional css of the description
+                     lightbox_slider_control_swipe:true,				//true,false - enable swiping control
+				    lightbox_slider_control_zoom:true,				//true, false - enable zooming control
+                    lightbox_show_textpanel: true,						//show the text panel
+                    lightbox_textpanel_enable_title: true,				//enable the title text
+					lightbox_textpanel_enable_description: true,		//enable the description text
+                    lightbox_textpanel_padding_top:5,					//textpanel padding top 
+					lightbox_textpanel_padding_bottom:5,				//textpanel padding bottom
+					lightbox_textpanel_padding_right: 11,				//cut some space for text from right
+					lightbox_textpanel_padding_left: 11,				//cut some space for text from left
+		
+					lightbox_textpanel_title_color:null,				//textpanel title color. if null - take from css
+					lightbox_textpanel_title_font_family:null,			//textpanel title font family. if null - take from css
+					lightbox_textpanel_title_text_align:null,			//textpanel title text align. if null - take from css
+					lightbox_textpanel_title_font_size:null,			//textpanel title font size. if null - take from css
+					lightbox_textpanel_title_bold:null,					//textpanel title bold. if null - take from css
+					lightbox_textpanel_css_title:{},					//textpanel additional css of the title
+					
+					lightbox_textpanel_desc_color:null,					//textpanel description font family. if null - take from css
+					lightbox_textpanel_desc_font_family:null,			//textpanel description font family. if null - take from css
+					lightbox_textpanel_desc_text_align:null,			//textpanel description text align. if null - take from css
+					lightbox_textpanel_desc_font_size:null,				//textpanel description font size. if null - take from css
+					lightbox_textpanel_desc_bold:null,					//textpanel description bold. if null - take from css
+					lightbox_textpanel_css_description:{},				//textpanel additional css of the description
+			}); 
+                });	
+         
+    </script>
+
+
+    <a name="info"></a>
+    <div class="info">
+        <h7>Created For:</h7> <p>This was a personal project created for my own learning experience.</p>
+        <h7>Purpose:</h7> <p>My goal for this project was to create a more modern design for this city website. The current design looks
+        like it was created a decade ago, and the site is difficult to navigate. The narrow columns also make reading the text on the site difficult.</p>
+        <h7>Tools Used:</h7><p> I used photoshop to create the mockup. I gathered inspiration from other city websites, and also researched how others are making city websites more user friendly.</p>
+        <h7>Process:</h7> <p>I started out by looking at other city websites and reading about common problems that city websites have. One thing I kept seeing was the mention of narrow columns and overwhelming amounts of information presented at once. I began by breaking down the current website into different areas; the header, body, sidebar, and footer. I then began sketching my own placement ideas for all of the elements and created a layout in photoshop. After I was happy with the layout I began placing in images and text from the website and creating a cohesive design. The next stage in my process will be to mark out the div placements and measurements. And then of course coding everything into a responsive webpage.</p>
+        <h7>Date:</h7> <p>This is an ongoing project that was started in June of 2016.</p>
+        <h7>Link:</h7> <p>There is not currently a link to a working prototype.</p>
+    </div>
+    
+   
+    
+</div>
+    	
+</body>
+</html>

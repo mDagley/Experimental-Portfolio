@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Portfolio</title>
+<link href="css/portfolio.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+<script src="js/masonry.js"></script>
+    <!-- ... [OTHER INCLUDES] ... -->
+		
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+		<script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script> 
+		
+		<link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css' /> 
+		<script type='text/javascript' src='unitegallery/themes/tiles/ug-theme-tiles.js'></script> 
+</head>
+
+<body>
+<div class="container">
+    
+	<div id="header"><h6><a href="about.html" class="about">MELISSA DAGLEY</a></h6>
+    	<div id="navigation"><h7><a href="home.html" class="nav">HOME</a> | <a href="design.html" class="nav">DESIGN</a> | <a href="code.html" class="nav">CODE</a> | 
+        <a href="Resume2017_Updated.pdf" class="nav">RESUME</a></h7></div>
+    </div>
+    <h2>Portfolio</h2>
+    <hr>
+     <div id="aboutProject">
+    <p>I created this portfolio site to showcase some of my previous design work, and also so that I could try out some new features and ideas. This is an ongoing project, that will continue to progress
+        as I do. Enjoy this look at the behind the scenes of creating this website.<a href="#info" class="info">More Info</a></p>
+    </div>
+     <p class="next"><a href="CityofMelissaRedesign.html">&#9668; Previous Project</a> | <a href="DesignInfoTemplate.html" class="next">Next Project &#9654;</a></p>
+    
+     <div id="gallery" style="display:none;">
+		
+			<img alt="Website Photoshop Mock-up" src="img/portfolioimg/01.jpg"
+				data-image="img/portfolioimg/01.jpg"
+				data-description="This is the mock-up I created for the website in photoshop.">
+        
+        <img alt="Initial Sketches" src="img/portfolioimg/02.png"
+				data-image="img/portfolioimg/02.png"
+				data-description="These are some sketches for the main page.">
+         
+         <img alt="Initial Sketches" src="img/portfolioimg/03.png"
+				data-image="img/portfolioimg/03.png"
+				data-description="These are some sketches for the main page.">
+         
+         <img alt="Initial Sketches" src="img/portfolioimg/04.png"
+				data-image="img/portfolioimg/04.png"
+				data-description="These are some sketches for the design page.">
+         
+         	<img alt="Initial Sketches" src="img/portfolioimg/05.jpg"
+				data-image="img/portfolioimg/05.jpg"
+				data-description="This is the mock-up I created for the website in photoshop.">
+        
+        <img alt="Initial Sketches" src="img/portfolioimg/06.jpg"
+				data-image="img/portfolioimg/06.jpg"
+				data-description="These are some sketches for the main page.">
+         
+         <img alt="Initial Sketches" src="img/portfolioimg/07.jpg"
+				data-image="img/portfolioimg/07.jpg"
+				data-description="These are some sketches for the main page.">
+         
+         <img alt="Initial Sketches" src="img/portfolioimg/08.jpg"
+				data-image="img/portfolioimg/08.jpg"
+				data-description="These are some sketches for the design page.">
+        
+
+			
+			
+        
+		</div>
+    
+    <script type="text/javascript"> 
+			
+			jQuery(document).ready(function(){ 
+				jQuery("#gallery").unitegallery({
+                theme_enable_preloader: true,		//enable preloader circle
+					theme_preloading_height: 200,		//the height of the preloading div, it show before the gallery
+					theme_preloader_vertpos: 100,		//the vertical position of the preloader
+                tiles_type:"nested",
+                gallery_width:"100%",				//gallery width
+					gallery_min_width: 150,				//gallery minimal width when resizing
+                tiles_enable_transition: true,			//enable transition when screen width change
+					tiles_space_between_cols: 6,			//space between images
+					tiles_space_between_cols_mobile: 3,     //space between cols for mobile type
+		 			tiles_nested_optimal_tile_width: 400,	// tiles optimal width
+					tiles_min_columns: 2,					//min columns - for mobile size, for 1 column, type 1
+                tile_enable_textpanel: true,		 	//enable textpanel
+					tile_textpanel_source: "title",		 	//title,desc,desc_title. source of the textpanel. desc_title - if description empty, put title
+					tile_textpanel_always_on: false,	 	//textpanel always visible
+					tile_textpanel_appear_type: "slide", 	//slide, fade - appear type of the textpanel on mouseover
+					tile_textpanel_position:"inside_bottom", //inside_bottom, inside_top, inside_center, top, bottom the position of the textpanel
+					tile_textpanel_offset:0,			    //vertical offset of the textpanel
+					
+					tile_textpanel_padding_top:8,		 	//textpanel padding top 
+					tile_textpanel_padding_bottom:8,	 	//textpanel padding bottom
+					tile_textpanel_padding_right: 11,	 	//cut some space for text from right
+					tile_textpanel_padding_left: 11,	 	//cut some space for text from left
+					tile_textpanel_bg_opacity: 0.4,		 	//textpanel background opacity
+					tile_textpanel_bg_color:"#000000",	 	//textpanel background color
+					tile_textpanel_bg_css:{},			 	//textpanel background css
+					
+					tile_textpanel_title_color:null,		 //textpanel title color. if null - take from css
+					tile_textpanel_title_font_family:null,	 //textpanel title font family. if null - take from css
+					tile_textpanel_title_text_align:null,	 //textpanel title text align. if null - take from css
+					tile_textpanel_title_font_size:null,	 //textpanel title font size. if null - take from css
+					tile_textpanel_title_bold:null,			 //textpanel title bold. if null - take from css
+					tile_textpanel_css_title:{},			 //textpanel additional css of the title
+		
+					tile_textpanel_desc_color:null,			 //textpanel description font family. if null - take from css
+					tile_textpanel_desc_font_family:null,	 //textpanel description font family. if null - take from css
+					tile_textpanel_desc_text_align:null,	 //textpanel description text align. if null - take from css
+					tile_textpanel_desc_font_size:null,		 //textpanel description font size. if null - take from css
+					tile_textpanel_desc_bold:null,		 //textpanel description bold. if null - take from css
+					tile_textpanel_css_description:{},		 //textpanel additional css of the description
+                     lightbox_slider_control_swipe:true,				//true,false - enable swiping control
+				    lightbox_slider_control_zoom:true,				//true, false - enable zooming control
+                    lightbox_show_textpanel: true,						//show the text panel
+                    lightbox_textpanel_enable_title: true,				//enable the title text
+					lightbox_textpanel_enable_description: true,		//enable the description text
+                    lightbox_textpanel_padding_top:5,					//textpanel padding top 
+					lightbox_textpanel_padding_bottom:5,				//textpanel padding bottom
+					lightbox_textpanel_padding_right: 11,				//cut some space for text from right
+					lightbox_textpanel_padding_left: 11,				//cut some space for text from left
+		
+					lightbox_textpanel_title_color:null,				//textpanel title color. if null - take from css
+					lightbox_textpanel_title_font_family:null,			//textpanel title font family. if null - take from css
+					lightbox_textpanel_title_text_align:null,			//textpanel title text align. if null - take from css
+					lightbox_textpanel_title_font_size:null,			//textpanel title font size. if null - take from css
+					lightbox_textpanel_title_bold:null,					//textpanel title bold. if null - take from css
+					lightbox_textpanel_css_title:{},					//textpanel additional css of the title
+					
+					lightbox_textpanel_desc_color:null,					//textpanel description font family. if null - take from css
+					lightbox_textpanel_desc_font_family:null,			//textpanel description font family. if null - take from css
+					lightbox_textpanel_desc_text_align:null,			//textpanel description text align. if null - take from css
+					lightbox_textpanel_desc_font_size:null,				//textpanel description font size. if null - take from css
+					lightbox_textpanel_desc_bold:null,					//textpanel description bold. if null - take from css
+					lightbox_textpanel_css_description:{},				//textpanel additional css of the description
+			}); 
+                });
+        
+  
+		</script>
+    
+
+   <br />
+    <br />
+    <br />
+    <a name="info"></a>
+    <div class="info">
+        <h7>Created For:</h7> <p>This is a personal project.</p>
+        <h7>Purpose:</h7> <p>I created this page for two main reasons. The first, was so that I could showcase some of my previous design work, and show a live example of some things I can do. Two, so that I could experiment
+        with some new features and code that I have not used before. I wanted it to be a place to take risks and try new things creatively.</p>
+        <h7>Tools Used:</h7><p> I used photoshop to mock up my original idea for the landing page, and then coded the site using HTML, CSS, and some scripts that I found across the web and modified, which used javascript.</p>
+        <h7>Process:</h7> <p>I initially started the project by sketching out some ideas for the page designs, taking time to decide on what pages I wanted to incorporate and what information I wanted each page to include.
+        After the sketching process I mocked up the landing page in photoshop so that I could begin creating the graphics for the hover effects. This was my first time implementing a hover effect that changed the background image
+        of the page, so I had to do some research on how to accomplish this. I then started working on the design page, and spent some time researching different gallry scripts that would behave the way I wanted. I have never tried
+        coding a script like this on my own, but I am interested in learning more, but starting on something much more simple than what is currently implemented on my site. The rest of the code was straight forward and didn't take
+        long to knock out. I am still in the process of designing and coding the code page, as well as the about section and resume.</p>
+        <h7>Date:</h7> <p>This is an ongoing project that was started in April of 2016</p>
+        
+        
+    </div>
+   
+    
+</div>
+</body>
+</html>
